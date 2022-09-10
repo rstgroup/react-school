@@ -1,4 +1,4 @@
-import { Eventrix, EventrixDebugger } from 'eventrix';
+import { Eventrix } from 'eventrix';
 import receivers from './receivers';
 
 const initialState = {
@@ -9,8 +9,5 @@ const initialState = {
 }
 
 const eventrix = new Eventrix(initialState, receivers);
-
-const eDebugger = new EventrixDebugger(eventrix);
-eDebugger.start();
 
 export default eventrix;
