@@ -11,15 +11,15 @@ import routes from "./constants/routes";
 function App() {
   return (
       <BrowserRouter>
-          <div className="App">
-              <NavigationBar />
-                <Routes>
-                    <Route path={routes.home.path} element={<HomePage />} />
-                    <Route path={routes.characters.path} element={<CharactersPage />} />
-                    <Route path={routes.planets.path} element={<PlanetsPage />} />
-                    <Route path={routes.ships.path} element={<ShipsPage />} />
-                </Routes>
-          </div>
+        <div className="App">
+            <NavigationBar />
+            <Routes>
+                <Route path={routes.home.path} element={<HomePage />} />
+                <Route path={routes.characters.path} element={<CharactersPage />} />
+                <Route path={routes.planets.path} element={<PlanetsPage />} />
+                <Route path={routes.ships.path} element={<ShipsPage />} />
+            </Routes>
+        </div>
       </BrowserRouter>
   );
 }

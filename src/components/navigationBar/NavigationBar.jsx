@@ -1,20 +1,17 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { useNavigate } from "react-router-dom";
 import routes from "../../constants/routes";
+import useStoreRoute from "../../hooks/useStoreRoute";
+import NavigationItem from "./NavigationItem";
+import NavigationButton from "./NavigationButton";
 
 const drawerWidth = 240;
 
@@ -26,7 +23,7 @@ const navItems = [
 ];
 
 function NavigationBar() {
-    const navigate = useNavigate();
+    const { pathname } = useStoreRoute(); // save current route in store
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -41,11 +38,12 @@ function NavigationBar() {
             <Divider />
             <List>
                 {navItems.map(({ path, label }) => (
-                    <ListItem key={path} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigate(path)}>
-                            <ListItemText primary={label} />
-                        </ListItemButton>
-                    </ListItem>
+                    <NavigationItem
+                        key={path}
+                        path={path}
+                        label={label}
+                        isActive={path === pathname}
+                    />
                 ))}
             </List>
         </Box>
@@ -75,9 +73,12 @@ function NavigationBar() {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map(({ path, label }) => (
-                            <Button key={path} sx={{ color: '#fff' }} onClick={() => navigate(path)}>
-                                {label}
-                            </Button>
+                            <NavigationButton
+                                key={path}
+                                path={path}
+                                label={label}
+                                isActive={path === pathname}
+                            />
                         ))}
                     </Box>
                 </Toolbar>
