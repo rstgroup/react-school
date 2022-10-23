@@ -14,22 +14,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import routes from "../../constants/routes";
 
 const drawerWidth = 240;
 
 const navItems = [
-    {
-        path: '/',
-        label: 'Home'
-    },
-    {
-        path: '/about',
-        label: 'About'
-    },
-    {
-        path: '/contact',
-        label: 'Contact'
-    },
+    routes.home,
+    routes.characters,
+    routes.planets,
+    routes.ships,
 ];
 
 function NavigationBar() {
@@ -43,7 +36,7 @@ function NavigationBar() {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
             <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
+                Star Wars API
             </Typography>
             <Divider />
             <List>
@@ -68,16 +61,17 @@ function NavigationBar() {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ display: { sm: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography
                         variant="h6"
                         component="div"
+                        align="left"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        Star Wars API
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map(({ path, label }) => (
