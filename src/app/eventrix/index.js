@@ -6,6 +6,8 @@ const initialState = {
     value: 0,
     status: 'idle',
   },
+  planets: [],
+  characters: [],
 }
 
 const eventrix = new Eventrix(initialState, receivers);
